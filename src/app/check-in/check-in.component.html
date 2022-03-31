@@ -1,1 +1,21 @@
-<p>check-in works!</p>
+<div class="check-in">
+  <div class="container">
+    <section class="login-container">
+      <article class="login">
+        <form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
+        <h3>Fazer Check-in</h3>
+        <div class="form-floating mb-3">
+          <input
+          formControlName="cpf"
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          [inputMask]="licenseInputMask"/>
+          <label class="form-label" for="usr">CPF</label>
+        </div>
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </form>
+      </article>
+    </section>
+  </div>
+</div>

@@ -1,6 +1,8 @@
+import { InputMaskModule } from '@ngneat/input-mask';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CheckInComponent } from './check-in.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +11,11 @@ import { CheckInComponent } from './check-in.component';
     CheckInComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputMaskModule
+
   ]
 })
 export class CheckInModule { }
