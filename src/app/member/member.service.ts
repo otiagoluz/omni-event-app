@@ -12,4 +12,27 @@ export class MemberService {
 
   constructor(private http: HttpClient) {}
 
+
+
+  list(): Observable<any> {
+    return this.http.get<any>(this.baseURL + '/members')
+  }
+
+  detail(cpf: string): Observable<any> {
+    return this.http.get<any>(this.baseURL + `/${cpf}`)
+  }
+
+  update(cpf: string, member: any): Observable<any> {
+    return this.http.patch<any>(this.baseURL + `/${cpf}`, member);
+  }
+
+  create(member: any): Observable<any> {
+    return this.http.post<any>(this.baseURL + '/members', member);
+  }
+
+  delete(cpf: string): Observable<JSON> {
+    const url = `${this.baseURL}/${cpf}`;
+    return this.http.delete<JSON>(url);
+  }
+
 }

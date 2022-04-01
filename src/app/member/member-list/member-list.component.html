@@ -1,0 +1,35 @@
+<div class="container" *ngIf="members$ | async as members">
+  <div class="table-responsive">
+    <h2 class="h2 bold text-secondary">Membros</h2>
+    <table
+      class="table table-striped table-hover caption-top"
+      dataSource="churches"
+    >
+      <thead>
+        <tr >
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Ordenacao</th>
+          <th scope="col">Setor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of members">
+          <th scope="row">{{ member?.cpf }}</th>
+          <td scope="row">
+            <a [routerLink]="[member?.cpf]">
+              {{ member.name }}
+            </a>
+          </td>
+          <td scope="row">{{ member.ordination }}</td>
+          <td scope="row">{{ member.sector_id }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button routerLink="/churches/create" type="button" class="btn btn-link">
+      <span>
+        Cadastrar novo membro
+      </span>
+    </button>
+  </div>
+</div>

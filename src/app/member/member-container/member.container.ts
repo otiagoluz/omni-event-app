@@ -10,5 +10,3 @@ export class MemberContainer implements OnInit {
   ngOnInit(): void {
   }
 }
-
-
