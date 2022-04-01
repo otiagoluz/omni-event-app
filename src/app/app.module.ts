@@ -1,9 +1,10 @@
+import { MemberModule } from './member/member.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CheckInModule } from './check-in/checkIn.module';
+import { EventModule } from './event/event.module';
 import { InputMaskModule } from '@ngneat/input-mask';
 
 @NgModule({
@@ -13,8 +14,9 @@ import { InputMaskModule } from '@ngneat/input-mask';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CheckInModule,
-    InputMaskModule
+    EventModule,
+    InputMaskModule,
+    MemberModule
   ],
   providers: [],
   bootstrap: [AppComponent]

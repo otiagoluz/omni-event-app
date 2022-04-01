@@ -1,4 +1,4 @@
-.check-in{
+.event{
   background: url('https://source.unsplash.com/random/1920×1080/?nature, forest, mountain') no-repeat;
   height: 100%;
   background-size: cover;
@@ -11,19 +11,11 @@
     height: 100%;
   }
 
-  .login-container {
+  &-container {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .login {
-      background: white;
-      width: 600px;
-      padding: 40px;
-    }
-
   }
-
 
 }

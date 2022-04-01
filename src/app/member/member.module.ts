@@ -1,0 +1,25 @@
+import { MemberContainer } from './member-container/member.container';
+import { MemberRoutingModule } from './member.routing.module';
+import { InputMaskModule } from '@ngneat/input-mask';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
+
+
+@NgModule({
+  declarations: [
+    MemberContainer
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InputMaskModule,
+    HttpClientModule,
+    MemberRoutingModule
+
+  ],
+})
+export class MemberModule { }

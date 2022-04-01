@@ -1,0 +1,17 @@
+<article class="login" *ngIf="!showConfirmation">
+  <form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
+    <h3>Fazer Check-in</h3>
+    <div class="form-floating mb-3">
+      <input formControlName="cpf" type="text" class="form-control" id="floatingInput" [inputMask]="licenseInputMask" />
+      <label class="form-label" for="usr">CPF</label>
+    </div>
+  </form>
+</article>
+
+
+<article class="confirmation" *ngIf="showConfirmation">
+  <h3>Bem Vindo!</h3>
+  <h4>{{ member.name }}</h4>
+  <h5>{{ member.ordination }}</h5>
+
+</article>
