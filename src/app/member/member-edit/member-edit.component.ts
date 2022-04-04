@@ -62,8 +62,7 @@ export class MemberEditComponent implements OnInit {
         ],
       ],
       cpf: [
-        member ? member.cpf : '',
-        [Validators.required],
+        member ? member.cpf : null, [Validators.required],
       ],
       ordination: [member ? member.ordination : null, [Validators.required]],
       sector_id: [member ? member.sector_id : null, [Validators.required]],
