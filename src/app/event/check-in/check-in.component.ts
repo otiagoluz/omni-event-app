@@ -48,8 +48,6 @@ export class CheckInComponent implements OnInit {
     let { cpf } = this.form.value;
     const data = { cpf };
 
-    console.log(data);
-
     this.eventService.checkIn(data).pipe(
       take(1),
       tap((checkIn) => {

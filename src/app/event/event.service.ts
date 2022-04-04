@@ -8,7 +8,8 @@ import { checkIn } from "./check-in/check-in.component";
 })
 export class EventService {
 
-  baseURL = 'http://localhost:7500'
+  // baseURL = 'http://localhost:7500'
+  baseURL = 'https://omni-event.herokuapp.com'
 
   constructor(private http: HttpClient) {}
 
