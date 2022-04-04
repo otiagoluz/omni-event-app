@@ -61,8 +61,12 @@
         <span>Criar</span>
       </button>
 
-      <button (click)="goBack()" type="button" class="btn btn-danger">
+      <button (click)="goBack()" type="button" class="btn btn-secondary">
         <span>Voltar</span>
+      </button>
+
+      <button (click)="onDelete()" type="button" class="btn btn-danger" [disabled]="!this.id">
+        <span>Deletar</span>
       </button>
     </div>
   </form>

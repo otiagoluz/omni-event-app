@@ -31,9 +31,9 @@ export class MemberService {
     return this.http.post<any>(this.baseURL + '/members', member);
   }
 
-  delete(cpf: string): Observable<JSON> {
-    const url = `${this.baseURL}/${cpf}`;
-    return this.http.delete<JSON>(url);
+  delete(cpf: string): Observable<any> {
+    const url = `${this.baseURL}/members/${cpf}`;
+    return this.http.delete<any>(url);
   }
 
   getSectors(): Observable<any> {

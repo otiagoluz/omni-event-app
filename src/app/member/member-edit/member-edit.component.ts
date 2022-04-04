@@ -82,6 +82,10 @@ export class MemberEditComponent implements OnInit {
     this.memberService.create(memberCreate).subscribe(() => this.goBack());
   }
 
+  onDelete(): void {
+    this.memberService.delete(this.id).subscribe(() => this.goBack());
+  }
+
   goBack(): void {
     this.location.back();
   }
