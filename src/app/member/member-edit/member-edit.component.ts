@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
+import { createMask } from '@ngneat/input-mask';
 
 @Component({
   templateUrl: './member-edit.component.html',
@@ -13,6 +14,14 @@ export class MemberEditComponent implements OnInit {
   form: FormGroup;
   member$: Observable<any>;
   id: string;
+  editMode = false;
+  cpfInputMask = createMask('999.999.999-99');
+  ordinations = Ordinations;
+
+  sectors$: Observable<[{
+    id: number,
+    name: string
+  }]>
 
   constructor(
     private memberService: MemberService,
@@ -22,8 +31,8 @@ export class MemberEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     const id = this.route.snapshot.paramMap.get('id');
+    this.sectors$ = this.memberService.getSectors();
 
     if (id) {
       this.id = id;
@@ -31,6 +40,7 @@ export class MemberEditComponent implements OnInit {
       this.member$.subscribe((member) => {
         this.initForm(member);
       });
+      this.editMode = true;
     } else {
       this.initForm();
     }
@@ -52,15 +62,15 @@ export class MemberEditComponent implements OnInit {
         ],
       ],
       cpf: [
-        member ? member.email : '',
-        [Validators.required, Validators.email],
+        member ? member.cpf : '',
+        [Validators.required],
       ],
-      ordination: [member ? member.ordination : '', [Validators.required]],
-      sector_id: [member ? member.sector_id : '', [Validators.required]],
+      ordination: [member ? member.ordination : null, [Validators.required]],
+      sector_id: [member ? member.sector_id : null, [Validators.required]],
     });
   }
 
-  onSubmit(): void {
+  onEdit(): void {
     let memberToSave = { ...this.form.value };
     this.memberService
       .update(this.id, memberToSave)
@@ -77,5 +87,14 @@ export class MemberEditComponent implements OnInit {
   }
 
 }
+
+export const Ordinations = [
+  { name: 'Cooperador' },
+  { name: 'Auxiliar' },
+  { name: 'Diácono' },
+  { name: 'Presbítero' },
+  { name: 'Evangelista' },
+  { name: 'Pastor' },
+]
 
 

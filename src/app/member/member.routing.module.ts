@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: MemberContainer,
     children: [
       { path: 'list', component: MemberListComponent},
-      { path: 'edit', component: MemberEditComponent},
+      { path: 'create', component: MemberEditComponent},
       { path: 'edit/:id', component: MemberEditComponent}
 
     ]

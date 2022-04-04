@@ -19,11 +19,11 @@ export class MemberService {
   }
 
   detail(cpf: string): Observable<any> {
-    return this.http.get<any>(this.baseURL + `/${cpf}`)
+    return this.http.get<any>(this.baseURL + `/members/${cpf}`)
   }
 
   update(cpf: string, member: any): Observable<any> {
-    return this.http.patch<any>(this.baseURL + `/${cpf}`, member);
+    return this.http.patch<any>(this.baseURL + `/members/${cpf}`, member);
   }
 
   create(member: any): Observable<any> {
@@ -33,6 +33,10 @@ export class MemberService {
   delete(cpf: string): Observable<JSON> {
     const url = `${this.baseURL}/${cpf}`;
     return this.http.delete<JSON>(url);
+  }
+
+  getSectors(): Observable<any> {
+    return this.http.get(this.baseURL + '/sectors');
   }
 
 }

@@ -17,4 +17,12 @@ export class MemberListComponent implements OnInit {
   ngOnInit(): void {
     this.members$ = this.memberService.list();
   }
+
+
+  convertCpfToID(cpf: string): string {
+    const regex1 = /[\."]/g;
+    const regex2 = /[\-"]/g;
+    return cpf.replace(regex1, '').replace(regex2, '');
+
+  }
 }

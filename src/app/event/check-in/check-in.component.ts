@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { createMask } from '@ngneat/input-mask';
 import { switchMap, take, tap } from 'rxjs';
@@ -11,13 +11,21 @@ import { EventService } from '../event.service';
 })
 export class CheckInComponent implements OnInit {
   form: FormGroup;
-  licenseInputMask = createMask('999.999.999-99');
+  cpfInputMask = createMask('999.999.999-99');
 
   showConfirmation = false;
+  showError: boolean;
 
   member: {
     name: string,
     ordination: string
+  }
+
+  @ViewChild('input', { static: false })
+   set input(element: ElementRef<HTMLInputElement>) {
+     if(element) {
+       element.nativeElement.focus()
+     }
   }
 
   constructor(
@@ -27,6 +35,7 @@ export class CheckInComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.showError = false;
   }
 
   initForm(): void {
@@ -50,9 +59,12 @@ export class CheckInComponent implements OnInit {
           ordination: checkIn.member.ordination
         }
         setTimeout(() => this.resetForm(), 4000);
+      }, err => {
+        this.showError = true;
+        setTimeout(() => this.ngOnInit(), 4000);
       })
     )
-    .subscribe();
+    .subscribe()
   }
 
   resetForm(): void {

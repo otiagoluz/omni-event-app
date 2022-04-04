@@ -1,17 +1,48 @@
-<article class="login" *ngIf="!showConfirmation">
-  <form [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
-    <h3>Fazer Check-in</h3>
-    <div class="form-floating mb-3">
-      <input formControlName="cpf" type="text" class="form-control" id="floatingInput" [inputMask]="licenseInputMask" />
-      <label class="form-label" for="usr">CPF</label>
+<article class="login shadow-lg rounded" *ngIf="!showConfirmation && !showError">
+  <form class="d-flex flex-column" [formGroup]="form" *ngIf="form" (ngSubmit)="onSubmit()">
+    <div class="d-flex justify-content-center align-items-center mb-5">
+      <div class="d-flex flex-column align-items-end text-right reuniao">
+        <h4 class="m-0">Reunião</h4>
+        <h4>de Obreiros</h4>
+      </div>
+      <a routerLink="/members/list">
+        <img class="logo" src="../../../assets/imgs/logo-adviamao.svg" alt=""  class="">
+      </a>
+    </div>
+    <div>
+      <h5 class="text-muted mb-3">Registrar Presença</h5>
+      <div class="form-floating mb-3">
+        <input
+          #input
+          formControlName="cpf"
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          autofocus
+          [inputMask]="cpfInputMask"
+        />
+        <label class="form-label" for="usr">CPF</label>
+      </div>
     </div>
   </form>
 </article>
 
 
 <article class="confirmation" *ngIf="showConfirmation">
-  <h3>Bem Vindo!</h3>
-  <h4>{{ member.name }}</h4>
-  <h5>{{ member.ordination }}</h5>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Presença Confirmada</h4>
+    <p>Seja bem Vindo <strong>{{ member.name  }}</strong> - {{ member.ordination }}</p>
+    <hr>
+    <p class="mb-0">Uma ótima reunião!</p>
+  </div>
+</article>
 
+
+
+<article class="confirmation" *ngIf="showError">
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Membro não encontrado</h4>
+    <p>Por favor, diriga-se a administração</p>
+    <hr>
+  </div>
 </article>

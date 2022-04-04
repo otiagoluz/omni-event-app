@@ -7,7 +7,7 @@
     >
       <thead>
         <tr >
-          <th scope="col">#</th>
+
           <th scope="col">Nome</th>
           <th scope="col">Ordenacao</th>
           <th scope="col">Setor</th>
@@ -15,21 +15,29 @@
       </thead>
       <tbody>
         <tr *ngFor="let member of members">
-          <th scope="row">{{ member?.cpf }}</th>
-          <td scope="row">
-            <a [routerLink]="[member?.cpf]">
+
+          <th scope="row">
+            <a [routerLink]="['', 'members', 'edit', member?.cpf]">
               {{ member.name }}
             </a>
-          </td>
+          </th>
           <td scope="row">{{ member.ordination }}</td>
-          <td scope="row">{{ member.sector_id }}</td>
+          <td scope="row">{{ member.sector.name}}</td>
         </tr>
       </tbody>
     </table>
-    <button routerLink="/churches/create" type="button" class="btn btn-link">
-      <span>
-        Cadastrar novo membro
-      </span>
-    </button>
+
+    <div class="d-flex flex-row gap-3">
+      <button routerLink="/create" type="button" class="btn btn-primary">
+        <span>
+          Cadastrar novo membro
+        </span>
+      </button>
+      <button routerLink="/event/check-in" type="button" class="btn btn-secondary">
+        <span>
+          Terminal Presença
+        </span>
+      </button>
+    </div>
   </div>
 </div>
