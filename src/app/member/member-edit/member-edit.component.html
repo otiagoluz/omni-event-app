@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-12 col-md-6">
           <div class="form-floating mb-3">
-            <input formControlName="name" type="text" class="form-control" id="floatingInput" placeholder="Nome da igreja">
+            <input formControlName="name" autocomplete="false" type="text" class="form-control" id="floatingInput" placeholder="Nome da igreja">
             <label class="form-label" for="usr">Nome</label>
           </div>
         </div>
@@ -19,10 +19,11 @@
           <div class="form-floating mb-3">
             <input
               formControlName="cpf"
-              type="cpf"
+              type="text"
               class="form-control"
               id="floatingInput"
-              placeholder="cpf"
+              placeholder="text"
+              autocomplete="false"
               [inputMask]="cpfInputMask"
             >
             <label class="form-label" for="inputCpf">CPF</label>
@@ -57,7 +58,7 @@
         <span>Editar</span>
       </button>
 
-      <button  (click)="onCreate()" *ngIf="!editMode" class="btn btn-primary">
+      <button  (click)="onCreate()" *ngIf="!editMode" [disabled]="form.invalid" class="btn btn-primary">
         <span>Criar</span>
       </button>
 

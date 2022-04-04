@@ -18,6 +18,8 @@ export class MemberEditComponent implements OnInit {
   cpfInputMask = createMask('999.999.999-99');
   ordinations = Ordinations;
 
+  cpfValidator = /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2})$/;
+
   sectors$: Observable<[{
     id: number,
     name: string
@@ -51,6 +53,7 @@ export class MemberEditComponent implements OnInit {
     this.member$ = this.memberService.detail(id);
   }
 
+
   initForm(member?: any): void {
     this.form = this.formBuilder.group({
       name: [
@@ -62,7 +65,7 @@ export class MemberEditComponent implements OnInit {
         ],
       ],
       cpf: [
-        member ? member.cpf : null, [Validators.required],
+        member ? member.cpf : null, [Validators.required, Validators.pattern(this.cpfValidator)],
       ],
       ordination: [member ? member.ordination : null, [Validators.required]],
       sector_id: [member ? member.sector_id : null, [Validators.required]],
@@ -77,7 +80,7 @@ export class MemberEditComponent implements OnInit {
   }
 
   onCreate(): void {
-    let memberCreate = { ...this.form.value };
+    let memberCreate = this.form.getRawValue();
     this.memberService.create(memberCreate).subscribe(() => this.goBack());
   }
 
