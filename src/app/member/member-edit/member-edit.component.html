@@ -54,7 +54,7 @@
       <hr>
 
     <div class="d-flex flex-row gap-3">
-      <button  (click)="onEdit()"  *ngIf="editMode" type="button" class="btn btn-primary">
+      <button  (click)="onEdit()"  *ngIf="editMode" [disabled]="form.invalid" type="button" class="btn btn-primary">
         <span>Editar</span>
       </button>
 
