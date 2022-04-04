@@ -25,4 +25,13 @@ export class MemberListComponent implements OnInit {
     return cpf.replace(regex1, '').replace(regex2, '');
 
   }
+
+
+  sortMembers(members: any[]): any[] {
+    return members.sort(function(a, b){
+      if(a.name < b.name) { return -1; }
+      if(a.name > b.name) { return 1; }
+      return 0;
+    })
+  }
 }
