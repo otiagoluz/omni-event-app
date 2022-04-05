@@ -1,3 +1,5 @@
+import { EventDetailComponent } from './event-detail/event-detail.component';
+import { EventListComponent } from './event-list/event-list.component';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberContainer } from './member-container/member.container';
@@ -14,7 +16,9 @@ import { HttpClientModule } from "@angular/common/http";
   declarations: [
     MemberContainer,
     MemberListComponent,
-    MemberEditComponent
+    MemberEditComponent,
+    EventListComponent,
+    EventDetailComponent
 
   ],
   imports: [

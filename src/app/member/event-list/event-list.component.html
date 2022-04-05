@@ -1,0 +1,11 @@
+
+<div class="event-list-container">
+  <div class="card" *ngFor="let event of events$ | async">
+    <h5 class="card-header">{{ event.date }}</h5>
+    <div class="card-body">
+      <p class="card-text">Presentes: {{ event.numberOfMembers }} membros</p>
+      <a [routerLink]="[event.date]" class="btn btn-primary">Ver lista de presença</a>
+    </div>
+  </div>
+</div>
+

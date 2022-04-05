@@ -1,0 +1,27 @@
+<div class="container" *ngIf="event$ | async as event">
+  <div class="table-responsive">
+    <div class="d-flex flex-column flex-md-row justify-content-between">
+      <h3>Evento: {{ event.info.date }}</h3>
+      <h5> Numero de presentes: {{ event.info.numberOfMembers }}</h5>
+    </div>
+    <table
+      class="table table-striped table-hover caption-top"
+      dataSource="churches"
+    >
+      <thead>
+        <tr >
+          <th scope="col">Nome</th>
+          <th scope="col">Ordenacao</th>
+          <th scope="col">Setor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let member of event.members">
+          <th scope="row">{{ member.name }}</th>
+          <td scope="row">{{ member.ordination }}</td>
+          <td scope="row">{{ member.sector }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
