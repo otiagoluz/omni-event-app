@@ -98,6 +98,7 @@ export const Ordinations = [
   { name: 'Cooperador' },
   { name: 'Auxiliar' },
   { name: 'Diácono' },
+  { name: 'Diaconisa' },
   { name: 'Presbítero' },
   { name: 'Evangelista' },
   { name: 'Pastor' },
