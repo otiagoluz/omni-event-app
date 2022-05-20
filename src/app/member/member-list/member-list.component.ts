@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MemberListComponent implements OnInit {
 
   members$: Observable<any[]>;
+  sectors$: Observable<any[]>;
 
   constructor(
     private memberService: MemberService
@@ -16,22 +17,19 @@ export class MemberListComponent implements OnInit {
 
   ngOnInit(): void {
     this.members$ = this.memberService.list();
+    this.sectors$ = this.memberService.getSectors();
   }
-
-
-  convertCpfToID(cpf: string): string {
-    const regex1 = /[\."]/g;
-    const regex2 = /[\-"]/g;
-    return cpf.replace(regex1, '').replace(regex2, '');
-
-  }
-
 
   sortMembers(members: any[]): any[] {
-    return members.sort(function(a, b){
+    return members.sort((a, b) => {
       if(a.name < b.name) { return -1; }
       if(a.name > b.name) { return 1; }
       return 0;
     })
   }
+
+
+
+
+
 }
